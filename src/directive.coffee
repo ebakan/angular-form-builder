@@ -50,6 +50,28 @@ angular.module 'builder.directive', [
                         $(element).find('>div:first').append $("<div class='fb-form-object-editable empty'></div>")
                     return
 
+
+                #for index in [0...$formObjects.length] by 1
+                for index in [0...1] by 1
+                    $formObject = $($formObjects[index])
+                    object =
+                      offset: ->
+                        left: e.pageX
+                        top: e.pageY
+                      width: -> 0
+                      height: -> 0
+                    if $drag.isHover object, $formObject
+                        $(element).find('.empty').remove()
+                        console.log $formObject.offset().top + $formObject.height() / 2
+                        console.log e.pageY
+                        $empty = $ "<div class='fb-form-object-editable empty'></div>"
+                        console.log
+                        if $formObject.offset().top + $formObject.height() / 2 < e.pageY
+                          $formObject.append($empty)
+                        else
+                          $formObject.prepend($empty)
+                        return
+
                 # the positions could added .empty div.
                 positions = []
                 # first

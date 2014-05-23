@@ -301,6 +301,7 @@ angular.module 'builder.drag', []
         data: @data
         draggable: @draggable
         droppable: @droppable
+        isHover: @isHover
     @get.$inject = ['$injector']
     @$get = @get
     return
