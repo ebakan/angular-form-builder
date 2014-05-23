@@ -62,10 +62,7 @@ angular.module 'builder.directive', [
                       height: -> 0
                     if $drag.isHover object, $formObject
                         $(element).find('.empty').remove()
-                        console.log $formObject.offset().top + $formObject.height() / 2
-                        console.log e.pageY
                         $empty = $ "<div class='fb-form-object-editable empty'></div>"
-                        console.log
                         if $formObject.offset().top + $formObject.height() / 2 < e.pageY
                           $formObject.append($empty)
                         else
